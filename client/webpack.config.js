@@ -2,6 +2,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 // TODO: Add and configure workbox plugins for a service worker and manifest file.
 
@@ -29,6 +31,13 @@ module.exports = () => {
         swDest: 'src-sw.js'
       }),
 
+      //Favicon Copy 
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'favicon.ico', to: 'favicon.ico' }
+        ]
+      }),
+
       //Create Manifest
       new WebpackPwaManifest({
         fingerprints: false, 
@@ -38,14 +47,14 @@ module.exports = () => {
         background_color:'#fff',
         theme_color:'#000',
         start_url:'./',
-        publicPath:'./',
+        publicPath:'/',
         icons: [
           {
-            src: '',
-            sizes:[],
-            destination: ''
+              src: 'src/images/logo.png',
+              sizes: [72, 96, 128, 144, 152, 192, 384, 512],
+              destination: path.join('assets/icons')
           }
-        ]
+      ]
       })
       
     ],
@@ -63,12 +72,19 @@ module.exports = () => {
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
-            option: {
+            options: {
               presets:['@babel/preset-env'],
               plugins:['@babel/plugin-proposal-object-rest-spread','@babel/transform-runtime']
             },
           },
         }, 
+        {
+          test: /\.(png|jpe?g|gif|svg)$/i,
+          type: 'asset/resource',
+          generator: {
+            filename: 'images/[hash][ext][query]'
+          }
+        },
       ],
     },
   };
