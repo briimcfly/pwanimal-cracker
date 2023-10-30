@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "concurrently \"cd server && npm run server\" \"cd client && npm run dev\"",
-    "start": "npm run build && cd server && node server.js",
+    "start": "npm run build:prod && cd server && node server.js",
+    "heroku-postbuild": "npm run build:prod",
     "server": "cd server nodemon server.js --ignore client",
     "build:dev": "cd client && npm run build:dev",
     "build:prod": "cd client && npm run build:prod",
