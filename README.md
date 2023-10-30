@@ -35,3 +35,23 @@ a browser-based text editor built to work offline.
 
 ## Overview
 This editor is a progressive web application (PWA) designed to function offline and is equipped with versatile data persistence techniques to ensure compatibility across different browsers. The core of its data storage functionality stems from the **idb** package, a favored IndexedDB API wrapper by industry leaders like Google and Mozilla. 
+
+![application image](https://github.com/briimcfly/pwanimal-cracker/assets/7972240/0c9b6f2c-9765-48c9-9cce-87a51060d07a)
+
+
+A deployed version can be viewed [here](https://pwanimal-cracker-011e7a407de9.herokuapp.com/)
+
+## Installation 
+To get started, clone the repository from the provided link. Then, enter the project directory and use your preferred package manager to install the necessary dependencies.
+
+## Usage 
+After completing installation, start the application by using `npm run start` then launch `localhost:3000`
+
+## Technologies Used 
+* Heroku
+* Webpack
+* Workbox
+* Babel
+
+## Reflection 
+This project has allowed me to apply the core skills I have recently learned and put them into practice. During development, I had the opportunity to deepen my understanding Webpack. Additionally, I developed a deeper appreciation for for the importance code commenting, and the development principal DRY. (Don't repeat yourself).
